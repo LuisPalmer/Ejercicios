@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cálculo diferencia de edades</title>
+</head>
+<body>
+
+<h1>Cálculo de diferencia de edades</h1>
+<script>
+
+function saltarlinea(){
+
+	document.write("<br><br><br>");
+
+}
+
+
+function imprimir (texto){
+
+	document.write(texto);
+	saltarlinea();
+}
+
+function dif2(){
+        var luis = 23;
+        var mimi = 16;
+        var dif;
+        dif= (luis - mimi);
+return dif;
+    }
+
+
+var luis = 22;
+var fer = 13;
+var diferencia = luis - fer;
+imprimir("¿Cuántos años de diferencia tienes con tu hermano?");
+imprimir("Yo Luis tengo: " + luis + " años");
+imprimir("Fer tiene: " + fer + " años");
+imprimir("Nuestra diferencia de edad es..." + diferencia + " años");
+
+var resultado = dif2();
+
+imprimir("es " + resultado);
+
+</script>
+
+</body>
+</html>
