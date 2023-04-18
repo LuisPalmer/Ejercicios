@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+	
+
+<button><big>Imprimir Heroes</big></button>
+
+<script>
+	
+
+	function imprimir(){
+
+		for(var i = 0 ; i < heroes.length ; i++){
+			alert(heroes[i]);
+		}
+
+		document.write("Impresión Finalizada");
+	}
+
+	
+	var heroes = ["Superman", "Thor", "Batman", "Mujer Maravilla"];
+
+
+	var button = document.querySelector("button");
+	button.onclick = imprimir;
+
+	
+</script>

@@ -1,0 +1,102 @@
+<meta charset="UTF-8">
+<h1> PROGRAMA - SIMULANDO UNA PANTALLA DE INICIO DE SESION </h1>
+
+<script>
+
+	function saltarlinea(){
+
+		document.write("<br>");
+
+	}
+
+
+	function imprimir (texto){
+
+		document.write(texto);
+		saltarlinea();
+	}
+
+	
+
+
+    var inicioDeSesionRegistrado = "alura";
+    var contrasenhaRegistrada = "alura321";
+    var intentosPermitidos = 3;
+    var intentos = 1;
+
+   
+    		
+    	while(intentos <= intentosPermitidos) { 
+
+    		var inicioDeSesionIngresado = prompt("Ingrese su usuario activo");
+
+    		if(inicioDeSesionIngresado == inicioDeSesionRegistrado){
+    			alert("USUARIO valido!!!!");
+    			break;
+    			  
+    		} 
+    		else if(intentos == intentosPermitidos) {
+         		alert("Se acabaron los intentos!!!!");
+     	}
+     	else{
+     		alert("nombre de USUARIO inválido. Favor intente de nuevo");
+     	}
+
+     	intentos ++;
+
+    	}
+
+
+    	if(inicioDeSesionIngresado == inicioDeSesionRegistrado){
+    		while(intentos <= intentosPermitidos){
+
+    			var contrasenhaIngresada = prompt("Ingrese su contraseña");
+
+    			if(contrasenhaIngresada == contrasenhaRegistrada){
+    				alert("Bienvenido al sistema " + inicioDeSesionIngresado);
+    				break;
+    			}else if(intentos == intentosPermitidos){
+    				alert("Se acabaron los intentos!!!!");
+    				break;
+
+    			}else{
+    				alert("inicio de sesión inválido. Favor intente de nuevo");
+    			}
+    			intentos ++;
+
+    		}
+    	}else{
+    		alert("No pudo acceder...");
+    	}
+    		
+    		
+
+
+     	
+/*
+
+     	var inicioDeSesionIngresado = prompt("Ingrese su usuario");
+     	var contrasenhaIngresada = prompt("Ingrese su contraseña");
+
+
+     	if( (inicioDeSesionRegistrado == inicioDeSesionIngresado) && (contrasenhaRegistrada == contrasenhaIngresada) ) {
+         		alert("Bienvenido al sistema " + inicioDeSesionIngresado);
+         	break;
+
+     	} else if(intentos == intentosPermitidos) {
+         		alert("Se acabaron los intentos!!!!");
+     	}else{
+     		alert("inicio de sesión inválido. Favor intente de nuevo");
+     	}
+
+     	intentos ++;
+	}
+
+*/
+
+
+	
+	
+
+
+</script>

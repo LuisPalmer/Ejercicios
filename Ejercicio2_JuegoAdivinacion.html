@@ -1,0 +1,49 @@
+<meta charset="UTF-8">
+
+<h1> Juego de Adivinación</h1>
+
+<script>
+
+	function saltarlinea(){
+
+		document.write("<br><br><br>");
+
+	}
+
+
+	function imprimir (texto){
+
+		document.write(texto);
+		saltarlinea();
+	}
+
+
+ 	function sorteo (n){
+ 		return Math.round(Math.random()*n);
+ 	}
+	
+	
+	var num = parseInt(prompt("Ingrese un numero aleatorio"));
+	var numeroPensado = sorteo(num);
+	var numeroRecibido = parseInt(prompt("Ingrese un numero entre 0-" + num));
+
+
+	if(numeroPensado == numeroRecibido){
+		imprimir("Usted acerto");
+	}
+     
+     else{
+
+     	if(numeroRecibido < numeroPensado){
+     		imprimir("Usted fallo, su número " + numeroRecibido  + " es menor al que se genero por máquina");
+     	}else{
+     		imprimir("Usted fallo, su número " + numeroRecibido + " es mayor al que se genero por máquina");
+     	}
+
+
+     	imprimir("El número era... " + numeroPensado );
+
+     }
+
+
+</script>

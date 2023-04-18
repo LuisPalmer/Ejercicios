@@ -1,0 +1,51 @@
+<meta charset="UTF-8">
+
+<h1>PROGRAMA - NUMEROS PARES DEL 1 AL 100</h1>
+
+
+
+<script>
+
+	function saltarlinea(){
+
+		document.write("<br><br><br>");
+
+	}
+
+
+	function imprimir (texto){
+
+		document.write(texto);
+		saltarlinea();
+	}
+
+
+	var contador = 0;
+
+	while(contador <= 100){
+		var par = contador % 2;
+
+		if(par == 0){
+			imprimir("Un numero par de la sucesion del 1 al 100 puede ser: " + contador);
+			
+			
+		}
+
+		contador++;
+
+			
+	}
+
+	imprimir("*******************************************************************************************");
+	imprimir("CON UN FOR");
+
+	for(contador = 2; contador<=100 ; contador = contador + 2){
+		imprimir("NUMERO PAR..." + contador);
+	}
+
+
+	
+
+	
+
+</script>
