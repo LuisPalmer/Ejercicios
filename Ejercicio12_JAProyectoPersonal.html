@@ -1,0 +1,155 @@
+<meta charset="utf-8">
+
+<canvas width="1000" height="800"></canvas>
+
+
+<script>
+	
+	function pantallaPrincipal(){
+		pincel.fillStyle = colorPantalla[posicion];
+		pincel.fillRect(0,0,800,600);
+		pincel.strokeStyle = "black";
+		pincel.strokeRect(0,0,800,600);
+		pincel.fill();
+		escribirTexto(contador);
+		//setInterval(moverBola,5);//moveremos la bola en un intervalo de 5 milisegundos
+
+	}
+
+	function cambiaColor(){
+		posicion++;
+		if(posicion >= colorPantalla.length){
+			posicion = 0;
+		}
+		
+
+		return false;
+	}
+
+
+	function circuloFlotando(x,y){
+		pincel.fillStyle = cambiarColorBola();//cambia de color cada que hago click ya que en la funcion pantalla principal es llamado esta funcion del "circuloFoltando"
+		pincel.strokeStyle = "black";
+		pincel.beginPath();
+		pincel.arc(x,y,25,0,2*Math.PI);
+		pincel.fill();
+		pincel.stroke();
+	}
+
+	function horaActual(){
+		var time = new Date();
+		var hora = checkTime(time.getHours()) + ":" + checkTime(time.getMinutes()) + ":" + checkTime(time.getSeconds());
+		
+		function checkTime(i){
+			if(i<10){
+				i = "0" + i;
+			}
+			return i;
+		}
+
+		return hora;
+	}
+
+
+	function escribirTexto (frase){
+		pincel.font = "35px Georgia";
+		pincel.fillStyle = "black";
+		pincel.fillText("Vuelta completada número: " + frase + " --> " +  horaActual(),65,300);
+	}
+
+	function cambiarColorBola(){
+		j++;
+		if(j >= colorBola.length){
+			j = 0;
+		}
+		return colorBola[j];
+	}
+
+
+	function limpiarPantalla(){
+		pincel.clearRect(0,0,800,600);
+		pantallaPrincipal();
+	}
+
+	function moverBola(){
+		
+		if(contador%2 == 0){
+			limpiarPantalla();
+			if(x > 770){
+				sentido = -1;
+			}else if(x < 0 ){
+				sentido = 1;
+				contador++;
+			}
+
+			x = x + sentido;
+			circuloFlotando(x,20);
+		}
+		else
+		if(contador%2 == 1){
+			limpiarPantalla();
+			if(y > 570){
+				sentido = -1;
+			}else if(y < 0 ){
+				sentido = 1;
+				contador++;
+			}
+			y = y + sentido;
+			circuloFlotando(0,y);
+		}
+
+
+//segundo caso
+		if(contador%2 == 0){
+
+			if(x2 > 760){
+				sentido2 = -1;
+			}else if(x2 < 0 ){
+				sentido2 = 1;
+			}
+			x2 = x2 + sentido2;
+			circuloFlotando(x2,570);
+        }else
+		if(contador%2 == 1){
+
+			if( y2 > 570){
+				sentido2 = -1;
+			}else if(y2 < 0){
+				sentido2 = 1;
+			}	
+			y2 = y2 + sentido2;
+			circuloFlotando(760,y2);
+
+		}	
+
+	}
+
+
+
+
+
+	var colorPantalla = ["orange","lightgreen","lightred","lightblue"];
+	var colorBola = ["#330099","#990099","#FF00CC","#33FF00","#0000FF"];
+	var posicion = 0;//color de la pantalla
+	var j = 0; //color de la bola
+	var x = 0;
+	var y = 0;
+	var x2 = 780;
+	var y2 = 580;
+	var sentido = 1;
+	var sentido2 = 1;
+	var contador = 0;
+
+	
+
+
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d");
+
+	
+	//pantalla.onclick = pantallaPrincipal;
+	pantalla.oncontextmenu = cambiaColor;
+	setInterval(moverBola,5);
+	
+	
+</script>

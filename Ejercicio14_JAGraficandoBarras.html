@@ -1,0 +1,115 @@
+<meta charset = "utf-8">
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    /*
+    Existen varios tipos de gráficos, entre los más famosos
+     están los gráficos de barras, que será objeto de
+      estudio en este ejercicio. Encontramos algunos datos
+       relevantes en internet sobre la evolución de uso de
+        navegadores o exploradores en los últimos 10 años,
+         el resultado fue el siguiente.
+
+    En 2009: 6% Chrome, 47% Firefox, 41% Internet Explorer/Edge*, 3% Safari, 3% Otros.
+    En 2019: 81% Chrome, 9% Firefox, 3% Internet Explorer/Edge*, 3% Safari, 4% Otros.
+
+    */
+
+
+    function fondo() {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.fillStyle = "lightyellow";
+        pincel.fillRect(0,0,500,400);
+        pincel.strokeStyle="black";
+        pincel.strokeRect(0,0,500,400);
+    }
+
+    function dibujarRectangulo(x, y, base, altura, color) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.fillStyle=color;
+        pincel.fillRect(x,y, base, altura);
+        pincel.strokeStyle="black";
+        pincel.strokeRect(x,y, base, altura);
+    }
+
+    function escribirTexto(x , y, texto) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.font="25px Georgia";
+        pincel.fillStyle="black";
+        pincel.fillText(texto, x, y);    
+    }
+
+    function escribirTexto2(x , y, texto) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.font="12px Georgia";
+        pincel.fillStyle="black";
+        pincel.fillText(texto, x, y);    
+    }
+
+
+    //Aquí viene el texto faltante
+
+    var serie2009 = [6, 47, 41, 3, 3];
+    var serie2019 = [81, 9, 3, 3, 4];//array con valores en porcentaje 
+
+    //Array de colores
+    var colores = ["blue","green","yellow", "red","gray"];
+    //Array de valores de navegadores
+    var valores = ["Chrome","Firefox","Internet Explorer/Edge", "Safari","Otros", ""];
+
+
+    //Funcion que nos ayudara a crear la grafica de barras
+        function dibujarBarra(x, y, serie, colores, texto) {
+
+        //Aquí necesitamos escribir el texto y dibujar los rectángulos
+       /* if(texto == "2009"){
+
+        for(var i = 0 ; i<=serie2009.length ; i++){
+            dibujarRectangulo(x,y,x,serie2009[i],colores[i]);
+           y = y + serie2009[i];
+        
+        }
+
+        }else if(texto == "2019"){
+            for(var i = 0 ; i<=serie2019.length ; i++){
+            dibujarRectangulo(x,y,50,serie2019[i],colores[i]);
+           y = y + serie2019[i];
+        
+        }
+
+            }
+
+*/     
+        escribirTexto(x + 20, y - 10,texto);
+        var j = 0;
+        for(var i = 0; i<=serie.length; i++ ){
+
+            escribirTexto2(x  + 100, y + 10 ,valores[j]);
+            dibujarRectangulo(x,y,100,serie[i]*3,colores[i]);
+
+            y = y + serie[i]*3;
+            j++;
+        }
+        
+
+        }           
+    
+
+
+    fondo();
+   // escribirTexto(60,40,"2009");
+    dibujarBarra(50, 50, serie2009, colores, "2009");
+   // escribirTexto(160,40,"2019");
+    dibujarBarra(280, 50, serie2019, colores, "2019");
+
+</script>

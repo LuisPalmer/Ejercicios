@@ -1,0 +1,66 @@
+<meta charset = "utf-8">
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+    pincel.fillStyle = "lightgray";
+    pincel.fillRect(0, 0, 600, 400);
+
+    function dibujarCirculo(x, y, radio, color) {
+
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x, y, radio, 0, 2*3.14);
+        pincel.fill();
+    }
+
+
+    //Creando una flor
+
+
+    function dibujandoFlor(x,y,radio){
+    dibujarCirculo(x,y,radio,"red");
+    dibujarCirculo(x + (2*radio), y , radio , "black");
+    dibujarCirculo(x , y + (2*radio) , radio , "blue");
+    dibujarCirculo(x - (2 *radio), y , radio , "orange");
+    dibujarCirculo(x , y - (2*radio) , radio ,"yellow");
+    }
+
+    //dibujandoFlor(300,200,25);//Flor comun
+//*****************************************************//
+
+    /*POR EL MOMENTO SOLO PODEMOS USAR ESTOS VALORES EN LA FLOR GENERAL*/
+    //Flor con raiz
+    var x1 = 200;
+    var y1 = 100;
+    var radio = 20;
+    dibujandoFlor(x1,y1,radio);
+    //dibujarCirculo(230,180,15,"green");//Ejemplo que propuse
+
+    var x = x1 + (radio + (radio/2));
+    var y = y1 + (4 * radio);
+
+    var radioRaiz = radio - 5;
+    while(y <= 400 ){
+        dibujarCirculo(x,y,(radio - 5),"green");
+
+        if( y < 260){
+            dibujarCirculo(230,260,radioRaiz,"green");
+            dibujarCirculo(190,265,radioRaiz,"green");
+            dibujarCirculo(150,280,radioRaiz,"green");
+
+            dibujarCirculo(310,260,radioRaiz,"green");
+            dibujarCirculo(350,265,radioRaiz,"green");
+            dibujarCirculo(390,280,radioRaiz,"green");
+        }
+        x = x + radio;
+        y = y + (2*radio);
+    }
+
+        
+
+
+</script>

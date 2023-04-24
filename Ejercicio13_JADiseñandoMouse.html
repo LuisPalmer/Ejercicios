@@ -1,0 +1,107 @@
+<meta charset="utf-8">
+<canvas width="600" height="400"></canvas>
+
+<script>
+    function dibujarCirculo(evento) {
+
+        if(puedoDibujar) {
+            var x = evento.pageX - pantalla.offsetLeft;
+            var y = evento.pageY - pantalla.offsetTop;
+            //><><><><><><><     
+            if((x >= 0 && x<= 155)  && (y >= 0 && y<= 55)){
+            
+             }else{
+            pincel.fillStyle = eleccion;
+            pincel.beginPath();
+            pincel.arc(x, y, 5, 0, 2 * 3.14);
+            pincel.fill();
+            
+             }
+  
+        }
+            
+        
+
+    }
+
+    
+
+    function habilitarDibujar() {
+
+            puedoDibujar = true;    
+           
+    }
+
+    function deshabilitarDibujar() {
+
+        puedoDibujar = false;
+    }
+
+
+    function paleta(x3,color){
+        pincel.fillStyle = color;
+        pincel.strokeStyle = "black";
+        pincel.beginPath();
+        pincel.fillRect(x3,0,50,50);
+        pincel.strokeRect(x3,0,50,50);
+        pincel.fill();
+    }
+
+
+    function paletaColores(){
+        for (var i = 0; i <= colores.length; i++) {
+            paleta(x3,colores[i]);
+           if( x3 <= 50){
+                x3 = x3 + 50; 
+                //console.log(x3);
+           }
+           
+        }
+    }
+
+
+
+    function cambiarColor (evento){
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;
+
+        if(x <= 50 && y <=50){
+            eleccion = colores[0];
+        }else if((x > 50 && x < 100) && (y <= 50)) {
+            eleccion = colores[1];
+        }else if((x > 100 && x < 150) && (y <= 50)){
+            eleccion = colores[2];
+        }
+
+    }
+
+
+    var pantalla = document.querySelector('canvas');
+    var pincel = pantalla.getContext('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect(0, 0, 600, 400);
+
+    var puedoDibujar = false;
+
+    var x3 = 0;
+    var colores = ["red","green","blue"];
+
+    var eleccion;
+
+
+
+
+  
+
+    paletaColores();
+
+    pantalla.onclick = cambiarColor;
+
+    pantalla.onmousemove = dibujarCirculo;
+
+    pantalla.onmousedown = habilitarDibujar;
+
+    pantalla.onmouseup = deshabilitarDibujar;
+
+</script>
